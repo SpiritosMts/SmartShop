@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:intl/intl.dart';
 import 'package:smartshop/screeens/main_screen.dart';
 import 'package:uuid/uuid.dart'; // Import the uuid package
 
-import 'main.dart';
-import 'models/user.dart'; // Import the MainScreen
+import '../main.dart';
+import '../models/user.dart'; // Import the MainScreen
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
@@ -22,6 +23,12 @@ class _SignupState extends State<Signup> {
   final TextEditingController _confirmPasswordController = TextEditingController();
   final _formKey = GlobalKey<FormState>(); // GlobalKey for the form
 
+  String getCurrentFormattedDate() {
+    var now = DateTime.now();
+    var formatter = DateFormat('HH:mm , dd MMMM yyyy');
+    String formattedDate = formatter.format(now);
+    return formattedDate;
+  }
   @override
   void dispose() {
     _emailController.dispose();
@@ -46,6 +53,7 @@ class _SignupState extends State<Signup> {
         pwd: _passwordController.text.trim(),
         phone: '',
         address: '',
+        joinDate: getCurrentFormattedDate(),
         verified: true,
         cart: [], // Initialize an empty cart for the user
       );

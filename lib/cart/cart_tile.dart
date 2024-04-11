@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:smartshop/product_widgets/cart_item.dart';
+
+import '../models/cloth.dart';
 
 class CartTile extends StatelessWidget {
-  final CartItem item;
+  final Cloth item;
   final Function() onRemove;
+  final Function() onDelete;
   final Function() onAdd;
   const CartTile(
       {super.key,
       required this.item,
       required this.onRemove,
+      required this.onDelete,
       required this.onAdd});
 
   @override
@@ -32,24 +35,29 @@ class CartTile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 padding: const EdgeInsets.all(10),
-                child: Image.asset(
-                  item.product.image,
+                child: Image.network(
+                  item.images[0],
                 ),
               ),
               const SizedBox(width: 20),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    item.product.title,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width/2.3,
+                    child: Text(
+                      item.name,
+                      maxLines: 1, // Set maximum number of lines to 1
+                      overflow: TextOverflow.ellipsis, // Render ellipsis if text overflows
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 5),
                   Text(
-                    item.product.category,
+                    item.term,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -58,7 +66,7 @@ class CartTile extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    "DT${item.product.price}",
+                    "DT ${item.price}",
                     style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -76,7 +84,7 @@ class CartTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed:onDelete,
                 icon: const Icon(
                   Icons.delete,
                   color: Color.fromARGB(255, 206, 170, 203),

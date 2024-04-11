@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smartshop/signin_page.dart';
-import 'package:smartshop/signup.dart'; // Import the signup page
+import 'package:smartshop/auth/signup.dart';
+
+import 'auth/signin_page.dart'; // Import the signup page
 
 class Welcomescreen extends StatefulWidget {
   const Welcomescreen({Key? key}) : super(key: key);

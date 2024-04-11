@@ -2,14 +2,14 @@ import 'package:app_settings/app_settings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smartshop/generalWidgets.dart';
 import 'package:smartshop/models/user.dart';
-import 'package:smartshop/screeens/Myprofile.dart';
+import 'package:smartshop/settings/Myprofile.dart';
 import 'package:smartshop/screeens/main_screen.dart';
 import 'package:smartshop/screeens/package/project11/screeens/alert_dialog.dart';
 import 'package:flutter/services.dart';
 
 import '../main.dart';
-import '../userProvider.dart';
 
 // ignore: must_be_immutable
 class AccountScreen extends StatefulWidget {
@@ -27,12 +27,7 @@ class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Profile",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),        centerTitle: true,
-      ),
+      appBar:generalAppbar('Profile', context),
       body: ListView(
         children: <Widget>[
           const SizedBox(height: 80),

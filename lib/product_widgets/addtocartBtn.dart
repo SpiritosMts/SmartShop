@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smartshop/screeens/cart_screen.dart';
+import 'package:get/get.dart';
+import 'package:smartshop/bindings.dart';
+import 'package:smartshop/cart/cart_screen.dart';
 //import 'package:project11/screeens/main_screen.dart';
 
 class AddToCart extends StatelessWidget {
@@ -71,10 +73,11 @@ class AddToCart extends StatelessWidget {
                 backgroundColor: const Color.fromARGB(255, 230, 178, 245),
               ),
               // Removed conflicting onPressed property
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Cartscreen()),
-              ),
+              onPressed: () {
+                Get.back();
+                Get.to(()=>Cartscreen());
+                homeCtr.addToCart(homeCtr.selectedCloth, currentNumber);
+              },
               child: const Text(
                 "Add to Cart",
                 style: TextStyle(

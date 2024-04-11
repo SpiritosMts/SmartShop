@@ -45,8 +45,7 @@ class Homeslider extends StatelessWidget {
                 margin: const EdgeInsets.only(right: 3),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color:
-                      currentSlide == index ? Colors.black : Colors.transparent,
+                  color: currentSlide == index ? Colors.black : Colors.transparent,
                   border: Border.all(color: Colors.black),
                 ),
               ),

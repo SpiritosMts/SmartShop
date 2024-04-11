@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:smartshop/userProvider.dart';
 import 'package:smartshop/welcome_screen.dart';
 
+import 'bindings.dart';
 import 'main.dart';
 
 class Logo extends StatefulWidget {
@@ -54,10 +54,10 @@ class _LogoState extends State<Logo> with SingleTickerProviderStateMixin {
 
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
-      // User is already logged in, navigate to MainScreen
-      RefreshUserByEmail(user.email);//get user from firebase
+      /// User is already logged in, navigate to MainScreen
+      authCtr.RefreshUserByEmail(user.email);//get user from firebase
     } else {
-      // User is not logged in, navigate to WelcomeScreen
+      /// User is not logged in, navigate to WelcomeScreen
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const Welcomescreen()),

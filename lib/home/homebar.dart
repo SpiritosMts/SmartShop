@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:app_settings/app_settings.dart';
 
+import '../bindings.dart';
+import '../generalWidgets.dart';
+
 class HomeAppBar extends StatelessWidget {
-  const HomeAppBar({
-    super.key,
-  });
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,14 @@ class HomeAppBar extends StatelessWidget {
           ),
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: () async {
+
+
+         // homeCtr.myCart = await authCtr.loadCart();
+          // await authCtr.saveCart(homeCtr.myCart);///save cart
+            //print('## ${homeCtr.allClothes.length}');
+            homeCtr.update();
+          },
           style: IconButton.styleFrom(
             backgroundColor: const Color.fromARGB(255, 211, 210, 208),
             padding: const EdgeInsets.all(12),

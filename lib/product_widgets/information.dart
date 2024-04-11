@@ -1,9 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:smartshop/screeens/product.dart';
+import 'package:smartshop/bindings.dart';
 
-class ProductInformation extends StatelessWidget {
-  final Product? product; // Declare product as nullable
-  const ProductInformation({super.key, required this.product});
+import '../models/cloth.dart';
+
+class ProductInformation extends StatefulWidget {
+
+  @override
+  State<ProductInformation> createState() => _ProductInformationState();
+}
+
+class _ProductInformationState extends State<ProductInformation> {
+   Cloth product =Cloth();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    product= homeCtr.selectedCloth;
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,19 +26,20 @@ class ProductInformation extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          product?.title ?? "",
+          product.name ?? "",
           style: const TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.bold,
           ),
         ),
+        SizedBox(height: 10,),
         Row(
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "DT ${product?.price.toString() ?? 'No price'}",
+                  "DT ${product.price.toString() ?? 'No price'}",
                   style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -51,7 +67,7 @@ class ProductInformation extends StatelessWidget {
                             color: Color.fromARGB(255, 240, 239, 237),
                           ),
                           Text(
-                            product?.rate.toString() ?? "No rating",
+                            product.rating.toString() ?? "No rating",
                             style: const TextStyle(
                               color: Color.fromARGB(255, 241, 240, 237),
                               fontSize: 13,
@@ -62,8 +78,8 @@ class ProductInformation extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 5),
-                    const Text(
-                      "(320 Reviews)",
+                     Text(
+                      "(${homeCtr.selectedCloth.reviews} Reviews)",
                       style: TextStyle(
                         color: Color.fromARGB(255, 164, 161, 163),
                         fontSize: 14,
@@ -74,12 +90,12 @@ class ProductInformation extends StatelessWidget {
               ],
             ),
             const Spacer(),
-            const Text.rich(
+             Text.rich(
               TextSpan(
                 children: [
                   TextSpan(text: "Seller: "),
                   TextSpan(
-                    text: "tarqul isalm",
+                    text: "${homeCtr.selectedCloth.seller}",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],

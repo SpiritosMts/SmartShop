@@ -1,46 +1,63 @@
 import 'package:flutter/material.dart';
-import 'package:smartshop/screeens/catergories.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
+import 'package:smartshop/bindings.dart';
+import 'package:smartshop/homeCtr.dart';
+import 'package:smartshop/models/cloth.dart';
+
+import '../generalWidgets.dart';
+import '../home/clothCard.dart';
 
 class Categoryy extends StatelessWidget {
-  const Categoryy({
-    super.key,
-  });
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 90,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return Column(
-            children: [
-              Container(
-                height: 60,
-                width: 60,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: const Color.fromARGB(255, 234, 214, 241),
-                  image: DecorationImage(
-                      image: AssetImage(categories[index].image)),
+    return GetBuilder<HomeController>(
+      builder: (context) {
+        return SizedBox(
+          height: 90,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            itemCount: categs.length,
+
+            itemBuilder: (context, index) {
+             Cloth firstItem = findFirstItem(categs[index]);
+
+              return GestureDetector(
+                onTap: (){
+                 homeCtr.filterByCateg(categs[index]);
+                 Fluttertoast.showToast(
+                   msg: "${categs[index]} Loaded",
+                   toastLength: Toast.LENGTH_SHORT,
+                   gravity: ToastGravity.CENTER,
+                   timeInSecForIosWeb: 1,
+                   backgroundColor: Colors.black45,
+                   textColor: Colors.white,
+                   fontSize: 16.0,
+                 );
+                },
+                child: Column(
+                  children: [
+                    buildCircleAvatar(firstItem.images[0],30.0),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      categs[index],
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Text(
-                categories[index].title,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          );
-        },
-        separatorBuilder: (context, index) => const SizedBox(
-          width: 20,
-        ),
-        itemCount: categories.length,
-      ),
+              );
+            },
+            separatorBuilder: (context, index) => const SizedBox(
+              width: 20,
+            ),
+          ),
+        );
+      }
     );
   }
 }

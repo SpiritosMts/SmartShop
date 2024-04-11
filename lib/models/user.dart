@@ -7,6 +7,7 @@ class UserModel {
   String pwd;
   String phone;
   String address;
+  String joinDate;
   bool verified;
   List cart;
 
@@ -17,6 +18,7 @@ class UserModel {
     this.pwd = '',
     this.phone = '',
     this.address = '',
+    this.joinDate = '',
     this.verified = false,
     this.cart = const [],
 
@@ -30,6 +32,7 @@ class UserModel {
       'email': email,
       'pwd': pwd,
       'phone': phone,
+      'joinDate': joinDate,
       'address': address,
       'verified': verified,
       'cart': cart,
@@ -44,6 +47,7 @@ class UserModel {
       name: json['name'] ?? '',
       email: json['email'] ?? '',
       pwd: json['pwd'] ?? '',
+      joinDate: json['joinDate'] ?? '',
       phone: json['phone'] ?? '',
       address: json['address'] ?? '',
       verified: json['verified'] ?? false,

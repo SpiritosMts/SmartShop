@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:smartshop/screeens/product.dart';
+
+import '../models/cloth.dart';
 
 class ProductDescription extends StatelessWidget {
-  final Product? product;
+  final Cloth? product;
   final String text;
   const ProductDescription({super.key, required this.text, this.product});
 

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:smartshop/screeens/account_screen.dart';
-import 'package:smartshop/screeens/cart_screen.dart';
-import 'package:smartshop/screeens/screens.dart';
+import 'package:smartshop/settings/account_screen.dart';
+import 'package:smartshop/cart/cart_screen.dart';
+import 'package:smartshop/home/screens.dart';
+
+import '../chatbot/chatScreen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -16,7 +18,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> screens = [
     const Screens(), // "Home" screen
     const Scaffold(), // Placeholder screens for demonstration
-    const Scaffold(),
+    const ChatScreen(), // chatbot
     const Cartscreen(),
     AccountScreen()
   ];

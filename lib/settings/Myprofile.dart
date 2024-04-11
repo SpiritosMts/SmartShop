@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smartshop/userProvider.dart';
+
+import '../auth/authCtr.dart';
 
 class ProfileEdit extends StatefulWidget {
   const ProfileEdit({super.key});
@@ -82,8 +83,8 @@ void editProfile(){
             ),
           ),
           const SizedBox(height: 20),
-          const Text(
-            'Joined  14 mars 2024',
+           Text(
+            'Joined: ${cUser.joinDate != ''?cUser.joinDate: '23:00, 24 Mars 2024' }',
             textAlign: TextAlign.center,
           ),
         ],

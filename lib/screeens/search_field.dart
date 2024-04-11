@@ -1,12 +1,11 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 
-import '../userProvider.dart';
+import '../bindings.dart';
+
 
 class SearchField extends StatelessWidget {
-  const SearchField({
-    super.key,
-  });
+
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +24,17 @@ class SearchField extends StatelessWidget {
             color: Color.fromARGB(255, 98, 96, 96),
           ),
           const SizedBox(width: 10),
-          const Flexible(
+          Flexible(
             flex: 4,
             child: TextField(
+              onSubmitted: (text){
+                homeCtr.filterBySearch(text);
+                print('## submitted search=$text');
+              },
               decoration: InputDecoration(
-                  hintText: "search...", border: InputBorder.none),
+                  hintText: "search...", border: InputBorder.none,
+
+              ),
             ),
           ),
           Container(

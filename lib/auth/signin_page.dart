@@ -2,11 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:smartshop/bindings.dart';
 import 'package:smartshop/main.dart';
 import 'package:smartshop/screeens/main_screen.dart';
 
-import 'models/user.dart';
-import 'userProvider.dart'; // Import the MainScreen
 
 class Loginpage extends StatefulWidget {
   final String initialEmail;
@@ -57,7 +56,7 @@ class _LoginpageState extends State<Loginpage> {
           password: password,
         );
 
-        RefreshUserByEmail(email);//get user from firebase
+        authCtr.RefreshUserByEmail(email);//get user from firebase
       } catch (error) {
         print("Error signing in: $error");
 
